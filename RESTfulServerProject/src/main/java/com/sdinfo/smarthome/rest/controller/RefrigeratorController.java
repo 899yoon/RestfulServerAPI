@@ -19,7 +19,9 @@ import com.sdinfo.smarthome.rest.service.RefrigeratorService;
 public class RefrigeratorController {
 	
 	@Autowired
-	RefrigeratorService refrigeratorService; 
+	RefrigeratorService refrigeratorService;
+	
+	/* TBL_REFRIGERATOR SELECT */
 	
 	@RequestMapping("/list")
 	public @ResponseBody List<RefrigeratorVo> selectQuery() throws Exception {
