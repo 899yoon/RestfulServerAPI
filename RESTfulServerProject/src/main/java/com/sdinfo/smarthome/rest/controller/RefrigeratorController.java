@@ -21,7 +21,7 @@ public class RefrigeratorController {
 	@Autowired
 	RefrigeratorService refrigeratorService;
 	
-	/* TBL_REFRIGERATOR SELECT */
+	/* TBL_REFRIGERATOR SELECT */    
 	
 	@RequestMapping("/list")
 	public @ResponseBody List<RefrigeratorVo> selectQuery() throws Exception {
