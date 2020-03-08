@@ -1,101 +1,106 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sdinfo.smarthome.rest.mapper.TvMapper">
+<mapper namespace="com.sdinfo.smarthome.rest.mapper.AircleanerMapper">
 	
-    <select id="getAllTv" resultType="com.sdinfo.smarthome.rest.domain.TvVo">
+    <select id="getAllAircleaner" resultType="com.sdinfo.smarthome.rest.domain.AircleanerVo">
 		SELECT 
-			HOME_CODE,
-			MDATE,
-			UC_PRODUCTTYPE,
-			UC_MODELGROUP,
-			UC_POWER,
-			UC_FANMODE,
-			UC_TOTALAIRCLEANLESS,
-			UC_DUSTSTATUS,
-			UI_DUSTPM2_5DATA,
-			UC_GASSTATUS,
-			UC_FILTERALARM,
-			UC_HUMANBODYSENSOR,
-			UI_HUMANBODYSENSORDATA,
-			SC_TEMPSENSOR,
-			UC_HUMIDITYSENSOR,
-			UC_BPM_MOVINGPOWER,
-			UI_BPM_DATA,RDATE
-		FROM TBL_TV A
+			A.HOME_CODE,
+			A.MDATE,
+			A.UC_PRODUCTTYPE,
+			A.UC_MODELGROUP,
+			A.UC_POWER,
+			A.UC_FANMODE,
+			A.UC_TOTALAIRCLEANLESS,
+			A.UC_DUSTSTATUS,
+			A.UI_DUSTPM2_5DATA,
+			A.UC_GASSTATUS,
+			A.UC_FILTERALARM,
+			A.UC_HUMANBODYSENSOR,
+			A.UI_HUMANBODYSENSORDATA,
+			A.SC_TEMPSENSOR,
+			A.UC_HUMIDITYSENSOR,
+			A.UC_BPM_MOVINGPOWER,
+			A.UI_BPM_DATA,
+			A.RDATE
+		FROM TBL_AIRCLEANER A
     </select>
     
     
-    
-    <insert id="insertDataRefrigerator">
+     
+    <insert id="insertDataAircleaner">
          
-         INSERT INTO TBL_REFRIGERATOR(
-         HOME_CODE,
-         MDATE,
-         PRODUCT_TYPE,
-         MODEL_GROUP,
-         COOLHIGHTEMP_AD,
-         COOLLOWTEMP_AD,
-         HEATLOWTEMP_AD,
-         HEATHIGHTEMP_AD,
-         ROOMTEMP_AD,
-         DEFROSTTEMP_AD,
-         OUTTEMP_AD,
-         FANOUTRPM,
-         FANFEEDBACKRPM,
-         LITER,
-         HUMIDITY,
-         ROOMTEMP,
-         DEFROSTTEMP,
-         OUTTEMP,
-         CHANGESTEP,
-         MAINMODEINDEX,
-         SUBMODEINDEX,
-         LEAKCOUNT,
-         REFRESHTIMER,
-         ERRORCODE,	
-         MOTIONSENSOR,
-         DOOROPEN,
-         POWER,
-         COMP,
-         DRAINHEATER,
-         DEFROSTHEATER,
-         LAMP,
-         RDATE
+         INSERT INTO TBL_AIRCLEANER(
+	         HOME_CODE,
+	         MDATE,
+	         UC_PRODUCTTYPE,
+	         UC_MODELGROUP,
+	         UC_POWER,
+	         UC_FANMODE,
+	         UC_TOTALAIRCLEANLESS,
+	         UC_DUSTSTATUS,
+	         UI_DUSTPM2_5DATA,
+	         UC_GASSTATUS,
+	         UC_FILTERALARM,
+	         UC_HUMANBODYSENSOR,
+	         UI_HUMANBODYSENSORDATA,
+	         SC_TEMPSENSOR,
+	         UC_HUMIDITYSENSOR,
+	         UC_BPM_MOVINGPOWER,
+	         UI_BPM_DATA,
+	         RDATE
          )
          VALUES (
-         #{home_code,jdbcType=VARCHAR},
-         to_date(#{mdate}, 'YYYY-MM-DD HH24:MI:SS'),
-         #{product_type,jdbcType=VARCHAR},
-         #{model_group},
-         #{coolhightemp_ad},
-         #{coollowtemp_ad},
-         #{heatlowtemp_ad},
-         #{heathightemp_ad},
-         #{roomtemp_ad},
-         #{defrosttemp_ad},
-         #{outtemp_ad},
-         #{fanoutrpm},
-         #{fanfeedbackrpm},
-         #{liter},
-         #{humidity,jdbcType=VARCHAR},
-         #{roomtemp,jdbcType=VARCHAR},
-         #{defrosttemp,jdbcType=VARCHAR},
-         #{outtemp,jdbcType=VARCHAR},
-         #{changestep,jdbcType=VARCHAR},
-         #{mainmodeindex,jdbcType=VARCHAR},
-         #{submodeindex,jdbcType=VARCHAR},
-         #{leakcount,jdbcType=VARCHAR},
-         #{refreshtimer,jdbcType=VARCHAR},
-         #{errorcode,jdbcType=VARCHAR},
-         #{motionsensor,jdbcType=VARCHAR},
-         #{dooropen,jdbcType=VARCHAR},
-         #{power,jdbcType=VARCHAR},
-         #{comp,jdbcType=VARCHAR},
-         #{drainheater,jdbcType=VARCHAR},
-         #{defrostheater,jdbcType=VARCHAR},
-         #{lamp,jdbcType=VARCHAR},
-         to_date(#{rdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+	         #{home_code,jdbcType=VARCHAR},
+	         to_date(#{mdate}, 'YYYY-MM-DD HH24:MI:SS'),
+	         #{uc_producttype},
+	         #{uc_modelgroup},
+	         #{uc_power},
+	         #{uc_fanmode},
+	         #{uc_totalaircleanless},
+	         #{uc_duststatus},
+	         #{ui_dustpm2_5data},
+	         #{uc_gasstatus},
+	         #{uc_filteralarm},
+	         #{uc_humanbodysensor},
+	         #{ui_humanbodysensordata},
+	         #{sc_tempsensor},
+	         #{uc_humiditysensor},
+	         #{uc_bpm_movingpower},
+	         #{ui_bpm_data},
+	         to_date(#{rdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
          )
-     </insert> 
+     </insert>
      
+     <update id="updateDataAircleaner">
+		UPDATE TBL_AIRCLEANER SET
+			
+			UC_PRODUCTTYPE = #{uc_producttype},
+	        UC_MODELGROUP = #{uc_modelgroup},
+	        UC_POWER = #{uc_power},
+	        UC_FANMODE = #{uc_fanmode},
+	        UC_TOTALAIRCLEANLESS = #{uc_totalaircleanless},
+	        UC_DUSTSTATUS = #{uc_duststatus},
+	        UI_DUSTPM2_5DATA = #{ui_dustpm2_5data},
+	        UC_GASSTATUS = #{uc_gasstatus},
+	        UC_FILTERALARM = #{uc_filteralarm},
+	        UC_HUMANBODYSENSOR = #{uc_humanbodysensor},
+	        UI_HUMANBODYSENSORDATA = #{ui_humanbodysensordata},
+	        SC_TEMPSENSOR = #{sc_tempsensor},
+	        UC_HUMIDITYSENSOR = #{uc_humiditysensor},
+	        UC_BPM_MOVINGPOWER = #{uc_bpm_movingpower},
+	        UI_BPM_DATA = #{ui_bpm_data},
+	        RDATE = to_date(#{rdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+         	
+         	WHERE 
+         	HOME_CODE = #{home_code,jdbcType=VARCHAR} AND
+         	MDATE = to_date(#{mdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+     </update>
+     
+     <delete id="deleteDataAircleaner">
+     	DELETE FROM TBL_AIRCLEANER
+			WHERE  
+			HOME_CODE = #{home_code,jdbcType=VARCHAR} AND
+         	MDATE = to_date(#{mdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+     </delete> 
+    
       
  </mapper>

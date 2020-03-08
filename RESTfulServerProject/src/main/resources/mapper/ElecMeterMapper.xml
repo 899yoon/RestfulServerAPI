@@ -1,0 +1,67 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdinfo.smarthome.rest.mapper.ElecMeterMapper">
+    <select id="getAllElecMeter" resultType="com.sdinfo.smarthome.rest.domain.ElecMeterVo">
+		SELECT 
+			A.HOME_CODE,
+			A.MDATE,
+			A.DEVICE_ID,
+			A.DEVICE_TYPE,
+			A.MEASURE_VALUE,
+			A.USE_VALUE,
+			A.DEVICE_STATUS,
+			A.RDATE
+		FROM TBL_ELEC_METER A
+    </select>
+   
+    
+    
+    <insert id="insertDataElecMeter">
+         
+         INSERT INTO TBL_ELEC_METER(
+        	HOME_CODE,
+			MDATE,
+			DEVICE_ID,
+			DEVICE_TYPE,
+			MEASURE_VALUE,
+			USE_VALUE,
+			DEVICE_STATUS,
+			RDATE
+         )
+         VALUES (
+         #{home_code,jdbcType=VARCHAR},
+         to_date(#{mdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS'),
+         #{device_id,jdbcType=VARCHAR},
+         #{device_type,jdbcType=VARCHAR},
+         #{measure_value},
+         #{use_value},
+         #{device_status,jdbcType=VARCHAR},
+         to_date(#{rdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+         )
+     </insert>
+     
+     
+     <update id="updateDataElecMeter">
+		UPDATE TBL_ELEC_METER SET
+			
+			DEVICE_TYPE =  #{device_type,jdbcType=VARCHAR},
+			MEASURE_VALUE = #{measure_value},
+			USE_VALUE = #{use_value},
+			DEVICE_STATUS = #{device_status,jdbcType=VARCHAR},
+			RDATE = to_date(#{rdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+         	
+         	WHERE 
+         	HOME_CODE = #{home_code,jdbcType=VARCHAR} AND
+         	MDATE = to_date(#{mdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS') AND
+         	DEVICE_ID = #{device_id,jdbcType=VARCHAR}
+     </update>
+     
+     <delete id="deleteDataElecMeter">
+     	DELETE FROM TBL_ELEC_METER
+			WHERE  
+			HOME_CODE = #{home_code,jdbcType=VARCHAR} AND
+         	MDATE = to_date(#{mdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS') AND
+         	DEVICE_ID = #{device_id,jdbcType=VARCHAR}
+     </delete>
+     
+     
+ </mapper>

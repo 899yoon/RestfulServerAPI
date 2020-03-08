@@ -1,0 +1,90 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdinfo.smarthome.rest.mapper.WaterMeterMapper">
+    <select id="getAllWaterMeter" resultType="com.sdinfo.smarthome.rest.domain.WaterMeterVo">
+		SELECT 
+			A.HOME_CODE,
+			A.MDATE,
+			A.DEVICE_ID,
+			A.DEVICE_TYPE,
+			A.MEASURE_VALUE,
+			A.USE_VALUE,DEVICE_STATUS,
+			A.RDATE
+		FROM TBL_WATER_METER A
+    </select>
+   
+    
+    <!-- 
+    <insert id="insertDataRefrigerator">
+         
+         INSERT INTO TBL_REFRIGERATOR(
+         HOME_CODE,
+         MDATE,
+         PRODUCT_TYPE,
+         MODEL_GROUP,
+         COOLHIGHTEMP_AD,
+         COOLLOWTEMP_AD,
+         HEATLOWTEMP_AD,
+         HEATHIGHTEMP_AD,
+         ROOMTEMP_AD,
+         DEFROSTTEMP_AD,
+         OUTTEMP_AD,
+         FANOUTRPM,
+         FANFEEDBACKRPM,
+         LITER,
+         HUMIDITY,
+         ROOMTEMP,
+         DEFROSTTEMP,
+         OUTTEMP,
+         CHANGESTEP,
+         MAINMODEINDEX,
+         SUBMODEINDEX,
+         LEAKCOUNT,
+         REFRESHTIMER,
+         ERRORCODE,	
+         MOTIONSENSOR,
+         DOOROPEN,
+         POWER,
+         COMP,
+         DRAINHEATER,
+         DEFROSTHEATER,
+         LAMP,
+         RDATE
+         )
+         VALUES (
+         #{home_code,jdbcType=VARCHAR},
+         to_date(#{mdate}, 'YYYY-MM-DD HH24:MI:SS'),
+         #{product_type,jdbcType=VARCHAR},
+         #{model_group},
+         #{coolhightemp_ad},
+         #{coollowtemp_ad},
+         #{heatlowtemp_ad},
+         #{heathightemp_ad},
+         #{roomtemp_ad},
+         #{defrosttemp_ad},
+         #{outtemp_ad},
+         #{fanoutrpm},
+         #{fanfeedbackrpm},
+         #{liter},
+         #{humidity,jdbcType=VARCHAR},
+         #{roomtemp,jdbcType=VARCHAR},
+         #{defrosttemp,jdbcType=VARCHAR},
+         #{outtemp,jdbcType=VARCHAR},
+         #{changestep,jdbcType=VARCHAR},
+         #{mainmodeindex,jdbcType=VARCHAR},
+         #{submodeindex,jdbcType=VARCHAR},
+         #{leakcount,jdbcType=VARCHAR},
+         #{refreshtimer,jdbcType=VARCHAR},
+         #{errorcode,jdbcType=VARCHAR},
+         #{motionsensor,jdbcType=VARCHAR},
+         #{dooropen,jdbcType=VARCHAR},
+         #{power,jdbcType=VARCHAR},
+         #{comp,jdbcType=VARCHAR},
+         #{drainheater,jdbcType=VARCHAR},
+         #{defrostheater,jdbcType=VARCHAR},
+         #{lamp,jdbcType=VARCHAR},
+         to_date(#{rdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+         )
+     </insert> 
+     
+      -->
+ </mapper>

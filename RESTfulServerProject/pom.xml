@@ -11,7 +11,7 @@
 	<groupId>com.sdinfo.smarthome.rest</groupId>
 	<artifactId>RESTfulServerProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>RESTfulServerProject</name>
+	<name>RESTfulServerAPI</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

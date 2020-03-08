@@ -1,0 +1,52 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdinfo.smarthome.rest.mapper.HomecamEventMapper">
+    <select id="getAllHomecamEvent" resultType="com.sdinfo.smarthome.rest.domain.HomecamEventVo">
+		SELECT 
+			A.HOME_CODE,
+			A.MDATE,
+			A.CAMERA_ID,
+			A.EVENT,
+			A.RDATE
+		FROM TBL_HOMECAM_EVENT A
+    </select>
+   
+    
+    
+    <insert id="insertDataHomecamEvent">
+         
+         INSERT INTO TBL_HOMECAM_EVENT(
+         	HOME_CODE,
+			MDATE,
+			CAMERA_ID,
+			EVENT,
+			RDATE
+         )
+         VALUES (
+	         #{home_code,jdbcType=VARCHAR},
+	         to_date(#{mdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS'),
+	         #{camera_id,jdbcType=VARCHAR},
+	         #{event},
+	         to_date(#{rdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+         )
+     </insert>
+     
+     <update id="updateDataHomecamEvent">
+		UPDATE TBL_HOMECAM_EVENT SET
+         	CAMERA_ID = #{camera_id,jdbcType=VARCHAR},
+         	EVENT = #{event},
+         	RDATE = to_date(#{rdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+         	
+         	WHERE 
+         	HOME_CODE = #{home_code,jdbcType=VARCHAR} AND
+         	MDATE = to_date(#{mdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+     </update>
+     
+     <delete id="deleteDataHomecamEvent">
+     	DELETE FROM TBL_HOMECAM_EVENT
+			WHERE  
+			HOME_CODE = #{home_code,jdbcType=VARCHAR} AND
+         	MDATE = to_date(#{mdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+     </delete>
+     
+     
+ </mapper>

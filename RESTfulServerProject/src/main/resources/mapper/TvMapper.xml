@@ -22,78 +22,78 @@
     </select>
     
     
-    <!-- 
-    <insert id="insertDataRefrigerator">
+    
+    <insert id="insertDataTv">
          
-         INSERT INTO TBL_REFRIGERATOR(
-         HOME_CODE,
-         MDATE,
-         PRODUCT_TYPE,
-         MODEL_GROUP,
-         COOLHIGHTEMP_AD,
-         COOLLOWTEMP_AD,
-         HEATLOWTEMP_AD,
-         HEATHIGHTEMP_AD,
-         ROOMTEMP_AD,
-         DEFROSTTEMP_AD,
-         OUTTEMP_AD,
-         FANOUTRPM,
-         FANFEEDBACKRPM,
-         LITER,
-         HUMIDITY,
-         ROOMTEMP,
-         DEFROSTTEMP,
-         OUTTEMP,
-         CHANGESTEP,
-         MAINMODEINDEX,
-         SUBMODEINDEX,
-         LEAKCOUNT,
-         REFRESHTIMER,
-         ERRORCODE,	
-         MOTIONSENSOR,
-         DOOROPEN,
-         POWER,
-         COMP,
-         DRAINHEATER,
-         DEFROSTHEATER,
-         LAMP,
-         RDATE
+         INSERT INTO TBL_TV(
+         	HOME_CODE,
+			MDATE,
+			UUID,
+			TRANSMIT_TYPE,
+			CHANNEL_MAJOR,
+			CHANNEL_MINOR,
+			VOLUME,
+			INPUT_SOURCE,
+			PROGRAM_INFORMATION,
+			KEYCODE,
+			LOCAL_IP,
+			IDX,
+			MANUFACTURER,
+			PRODUCT_TV_CODE,
+			OBJECT_MOVING_SENSE,
+			RDATE
          )
          VALUES (
-         #{home_code,jdbcType=VARCHAR},
-         to_date(#{mdate}, 'YYYY-MM-DD HH24:MI:SS'),
-         #{product_type,jdbcType=VARCHAR},
-         #{model_group},
-         #{coolhightemp_ad},
-         #{coollowtemp_ad},
-         #{heatlowtemp_ad},
-         #{heathightemp_ad},
-         #{roomtemp_ad},
-         #{defrosttemp_ad},
-         #{outtemp_ad},
-         #{fanoutrpm},
-         #{fanfeedbackrpm},
-         #{liter},
-         #{humidity,jdbcType=VARCHAR},
-         #{roomtemp,jdbcType=VARCHAR},
-         #{defrosttemp,jdbcType=VARCHAR},
-         #{outtemp,jdbcType=VARCHAR},
-         #{changestep,jdbcType=VARCHAR},
-         #{mainmodeindex,jdbcType=VARCHAR},
-         #{submodeindex,jdbcType=VARCHAR},
-         #{leakcount,jdbcType=VARCHAR},
-         #{refreshtimer,jdbcType=VARCHAR},
-         #{errorcode,jdbcType=VARCHAR},
-         #{motionsensor,jdbcType=VARCHAR},
-         #{dooropen,jdbcType=VARCHAR},
-         #{power,jdbcType=VARCHAR},
-         #{comp,jdbcType=VARCHAR},
-         #{drainheater,jdbcType=VARCHAR},
-         #{defrostheater,jdbcType=VARCHAR},
-         #{lamp,jdbcType=VARCHAR},
-         to_date(#{rdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+	         #{home_code,jdbcType=VARCHAR},
+	         to_date(#{mdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS'),
+	         #{uuid},
+	         #{transmit_type},
+	         #{channel_major},
+	         #{channel_minor},
+	         #{volume},
+	         #{input_source},
+	         #{program_information,jdbcType=VARCHAR},
+	         #{keycode},
+	         #{local_ip},
+	         #{idx},
+	         #{manufacturer,jdbcType=VARCHAR},
+	         #{product_tv_code,jdbcType=VARCHAR},
+	         #{object_moving_sense},
+	         to_date(#{rdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
          )
-     </insert> 
+     </insert>
      
-      -->
+     <update id="updateDataTv">
+		UPDATE TBL_TV SET
+			
+			UUID = #{uuid},
+			TRANSMIT_TYPE = #{transmit_type},
+			CHANNEL_MAJOR = #{channel_major},
+			CHANNEL_MINOR = #{channel_minor},
+			VOLUME = #{volume},
+			INPUT_SOURCE = #{input_source},
+			PROGRAM_INFORMATION = #{program_information,jdbcType=VARCHAR},
+			KEYCODE = #{keycode},
+			LOCAL_IP = #{local_ip},
+			IDX = #{idx},
+			MANUFACTURER = #{manufacturer,jdbcType=VARCHAR},
+			PRODUCT_TV_CODE = #{product_tv_code,jdbcType=VARCHAR},
+			OBJECT_MOVING_SENSE = #{object_moving_sense},
+			RDATE = to_date(#{rdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+         	
+         	WHERE 
+         	HOME_CODE = #{home_code,jdbcType=VARCHAR} AND
+         	MDATE = to_date(#{mdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+     </update>
+     
+     <delete id="deleteDataTv">
+     	DELETE FROM TBL_TV
+			WHERE  
+			HOME_CODE = #{home_code,jdbcType=VARCHAR} AND
+         	MDATE = to_date(#{mdate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS')
+     </delete> 
+     
+      
+     
+     
  </mapper>
